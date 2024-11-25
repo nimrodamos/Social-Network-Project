@@ -8,6 +8,7 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   // Temporary mock user data for testing
   const mockUser = {
@@ -29,8 +30,10 @@ const SignupPage = () => {
       lastName === mockUser.lastName
     ) {
       setMessage(`Signup successful! Welcome, ${mockUser.firstName}`);
+      setIsError(false);
     } else {
       setMessage("Signup failed: Invalid details. Please try again.");
+      setIsError(true);
     }
 
     /*
@@ -91,7 +94,11 @@ const SignupPage = () => {
           Sign Up
         </button>
       </form>
-      {message && <p className="signup-message">{message}</p>}
+      {message && (
+        <p className={`signup-message ${isError ? "error-message" : ""}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };
