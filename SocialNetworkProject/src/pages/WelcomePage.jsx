@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./HomePage.css";
+import "./WelcomePage.css";
 
-const HomePage = () => {
+const WelcomePage = () => {
   return (
-    <div className="home-container">
-      <h1 className="home-heading">Welcome to the Social Network</h1>
-      <p className="home-description">
+    <div className="welcome-container">
+      <h1 className="welcome-heading">Welcome to the Social Network</h1>
+      <p className="welcome-description">
         Connect with friends and share your moments.
       </p>
       <div>
@@ -21,4 +21,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default WelcomePage;
