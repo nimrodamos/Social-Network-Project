@@ -6,6 +6,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   // Temporary mock user data for testing
   const mockUser = {
@@ -21,8 +22,10 @@ const LoginPage = () => {
     // Validate email and password against mock data
     if (email === mockUser.email && password === mockUser.password) {
       setMessage(`Login successful! Welcome back, ${mockUser.firstName}`);
+      setIsError(false);
     } else {
       setMessage("Error: Invalid email or password. Please try again.");
+      setIsError(true);
     }
 
     /*
@@ -65,7 +68,11 @@ const LoginPage = () => {
           Login
         </button>
       </form>
-      {message && <p className="login-message">{message}</p>}
+      {message && (
+        <p className={`login-message ${isError ? "error-message" : ""}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };
