@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SignupPage.css";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
   // Managing form states and messages
@@ -18,6 +19,8 @@ const SignupPage = () => {
     password: "123456",
   };
 
+  const navigate = useNavigate();
+
   // Function to handle signup
   const handleSignup = (e) => {
     e.preventDefault();
@@ -31,6 +34,7 @@ const SignupPage = () => {
     ) {
       setMessage(`Signup successful! Welcome, ${mockUser.firstName}`);
       setIsError(false);
+      navigate("/login");
     } else {
       setMessage("Signup failed: Invalid details. Please try again.");
       setIsError(true);

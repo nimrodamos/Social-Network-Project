@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 
+import { useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
   // Managing form states and messages
   const [email, setEmail] = useState("");
@@ -15,6 +17,8 @@ const LoginPage = () => {
     firstName: "Test User",
   };
 
+  const navigate = useNavigate();
+
   // Function to handle login
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,6 +27,7 @@ const LoginPage = () => {
     if (email === mockUser.email && password === mockUser.password) {
       setMessage(`Login successful! Welcome back, ${mockUser.firstName}`);
       setIsError(false);
+      navigate("/home");
     } else {
       setMessage("Error: Invalid email or password. Please try again.");
       setIsError(true);
