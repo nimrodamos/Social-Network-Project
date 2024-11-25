@@ -1,31 +1,54 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./SignupPage.css"; // ייבוא קובץ ה-CSS
+import "./SignupPage.css";
 
 const SignupPage = () => {
+  // Managing form states and messages
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSignup = async (e) => {
+  // Temporary mock user data for testing
+  const mockUser = {
+    firstName: "John",
+    lastName: "Doe",
+    email: "test@example.com",
+    password: "123456",
+  };
+
+  // Function to handle signup
+  const handleSignup = (e) => {
     e.preventDefault();
+
+    // Validate email and password against mock data
+    if (
+      email === mockUser.email &&
+      password === mockUser.password &&
+      firstName === mockUser.firstName &&
+      lastName === mockUser.lastName
+    ) {
+      setMessage(`Signup successful! Welcome, ${mockUser.firstName}`);
+    } else {
+      setMessage("Signup failed: Invalid details. Please try again.");
+    }
+
+    /*
+    When you have a real server, replace the mock data validation with this:
+
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/signup",
-        {
-          firstName,
-          lastName,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/api/users/signup", {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
       setMessage(`Signup successful! Welcome, ${response.data.firstName}`);
     } catch (error) {
       setMessage("Error: Unable to sign up. Please try again.");
       console.error(error);
     }
+    */
   };
 
   return (

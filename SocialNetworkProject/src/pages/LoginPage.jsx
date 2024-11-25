@@ -1,27 +1,44 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./LoginPage.css";
 
 const LoginPage = () => {
+  // Managing form states and messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleLogin = async (e) => {
+  // Temporary mock user data for testing
+  const mockUser = {
+    email: "test@example.com",
+    password: "123456",
+    firstName: "Test User",
+  };
+
+  // Function to handle login
+  const handleLogin = (e) => {
     e.preventDefault();
+
+    // Validate email and password against mock data
+    if (email === mockUser.email && password === mockUser.password) {
+      setMessage(`Login successful! Welcome back, ${mockUser.firstName}`);
+    } else {
+      setMessage("Error: Invalid email or password. Please try again.");
+    }
+
+    /*
+    When you have a real server, replace the mock data validation with this:
+    
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/api/users/login", {
+        email,
+        password,
+      });
       setMessage(`Login successful! Welcome back, ${response.data.firstName}`);
     } catch (error) {
       setMessage("Error: Invalid email or password. Please try again.");
       console.error(error);
     }
+    */
   };
 
   return (
