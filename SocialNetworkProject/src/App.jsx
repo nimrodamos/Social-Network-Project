@@ -4,6 +4,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import HomePage from "./pages/HomePage/HomePage";
+import "./App.css";
 
 const App = () => {
   return (
