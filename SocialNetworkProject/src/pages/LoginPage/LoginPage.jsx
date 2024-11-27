@@ -4,14 +4,12 @@ import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  // Managing form states and messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
-  // Temporary mock user data for testing
-  const mockUser = {
+  const dummyUser = {
     email: "test@example.com",
     password: "123456",
     firstName: "Test User",
@@ -19,13 +17,11 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  // Function to handle login
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Validate email and password against mock data
-    if (email === mockUser.email && password === mockUser.password) {
-      setMessage(`Login successful! Welcome back, ${mockUser.firstName}`);
+    if (email === dummyUser.email && password === dummyUser.password) {
+      setMessage(`Login successful! Welcome back, ${dummyUser.firstName}`);
       setIsError(false);
       navigate("/home");
     } else {

@@ -3,7 +3,6 @@ import "./SignupPage.css";
 import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
-  // Managing form states and messages
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,8 +10,7 @@ const SignupPage = () => {
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
-  // Temporary mock user data for testing
-  const mockUser = {
+  const DummyUser = {
     firstName: "John",
     lastName: "Doe",
     email: "test@example.com",
@@ -21,18 +19,16 @@ const SignupPage = () => {
 
   const navigate = useNavigate();
 
-  // Function to handle signup
   const handleSignup = (e) => {
     e.preventDefault();
 
-    // Validate email and password against mock data
     if (
-      email === mockUser.email &&
-      password === mockUser.password &&
-      firstName === mockUser.firstName &&
-      lastName === mockUser.lastName
+      email === DummyUser.email &&
+      password === DummyUser.password &&
+      firstName === DummyUser.firstName &&
+      lastName === DummyUser.lastName
     ) {
-      setMessage(`Signup successful! Welcome, ${mockUser.firstName}`);
+      setMessage(`Signup successful! Welcome, ${DummyUser.firstName}`);
       setIsError(false);
       navigate("/login");
     } else {
